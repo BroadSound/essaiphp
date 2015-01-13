@@ -1,0 +1,67 @@
+@font-face
+{
+	font-family: Harabara;
+	src: url('Harabara.ttf');
+}
+
+
+
+body
+{
+ background-image: url('../background.jpeg');
+ color: white;
+ padding: 0;
+ margin: 0;
+}
+
+
+
+.col-md-2 .sticky
+{
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+	border-radius: 0 5px 5px 0;
+	background-image: url('../background2.png');
+	z-index: 10;
+	padding-left: 5px;
+	padding-right: 10px;
+	padding-top: 10px;
+	margin-top: 25px;
+	left: 0;
+
+}
+
+.petit
+{
+	border-bottom: 2px solid black;
+	border-radius: 0 0 5px 5px;
+	background-image: url('../background2.png');
+	z-index: 10;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	width: 100%;
+	left: 0;
+
+}
+
+#asidegauche li
+{
+	margin-bottom: 25%;
+	display: block;
+}
+
+
+#asidegauche a
+{
+	text-decoration:none;
+}
+
+
+
+#asidegauche img
+{
+	width: 120px;
+}

@@ -1,0 +1,145 @@
+@font-face
+{
+	font-family: Harabara;
+	src: url('Harabara.ttf');
+}
+
+
+
+body
+{
+ background-image: url('../background.jpeg');
+ background-attachment: scroll;
+}
+
+a, a:hover
+{
+	text-decoration: none;
+}
+
+/*////////////////////////////////
+///////////HEADER////////////////
+///////////////////////////////*/
+
+
+.banner
+{
+	height: 100px;
+
+
+}
+
+header img
+{
+	width: 100%;
+	height: auto;
+
+}
+
+
+/*////////////////////////////////
+///////////CONTENU////////////////
+///////////////////////////////*/
+
+.contenu
+{
+	margin-top: 20px;
+}
+
+h1
+{
+	color: orange;
+	font-family: Harabara;
+	text-shadow: 2px 2px 2px grey;
+}
+
+
+h2, .badge
+{
+	display: inline;
+}
+
+span
+{
+	margin-left: 10px;
+}
+
+.badge
+{
+	color: white;
+}
+
+.thumbnail img
+{
+	border: 3px black solid;
+}
+
+.thumbnail
+{
+	background: url('background2.png');
+	color: white;
+}
+ 
+.extrait
+{
+	border: none;
+	font-family: 'Comic Sans MS';
+	color: white;
+}
+
+.popover
+{
+	width: 100%;
+	background-color: #515151;
+	color: white;
+	border: 2px solid black;
+}
+
+.thumbnail .col-xs-6 *, .thumbnail .col-xs-6, .thumbnail .col-xs-4
+{
+	padding: 0;
+	margin: 0;
+}
+
+.essai img {
+	position: relative;
+	width: 100%;
+	height: auto;
+
+}
+
+.col-md-2 {
+	overflow: hidden;
+}
+
+
+.etiquette {
+	position: absolute;
+	bottom: 23px;
+	width: 155px;
+	height: 25px;
+	opacity: 0.6;
+}
+
+.etiquette_text
+{
+	text-align: center;
+	color: white;
+	font-size: 1.3em;
+	font-family: Harabara;
+	opacity: 1;
+}
+
+
+/*////////////////////////////////
+///////////FOOTER////////////////
+///////////////////////////////*/
+
+footer
+{
+	background-image: url('../background2.png');
+	height: 50px;
+	color: white;
+	border-top: 2px solid black;
+	width: 100%;
+}

@@ -1,0 +1,172 @@
+@font-face
+{
+	font-family: Harabara;
+	src: url('Harabara.ttf');
+}
+
+
+
+body
+{
+ background-image: url('../background.jpeg');
+ color: white;
+}
+
+img
+{
+	max-width: 100%;
+	height: auto;
+}
+
+
+/*HEADER*/
+
+
+header, .navbar
+{
+	border-bottom: 2px black solid;
+	background-image: url('../background2.png');
+	height: 100px;
+	text-align: center;
+}
+
+
+header li, .navbar li
+{
+	padding-left: 2px;
+	padding-right: 5px;
+}
+
+.panel-heading
+{
+	font-family: Harabara;
+	color: #FF6C00;
+	
+
+	
+}
+
+.panel
+{
+	border: 0;
+	width: 100%;
+	background-image: url('../background.jpeg');
+	margin-top: 40px;
+
+}
+
+.panel-heading
+{
+	
+	font-size: xx-large;
+	padding: 0;
+	margin: 0;
+	background-image: url('../background.jpeg');
+}
+
+.panel-body
+{
+	border-bottom: 2px solid orange;
+	border-left: 2px solid orange;
+	border-right: 2px solid orange;
+	border-radius: 0 0 5px 5px;
+	background-image: url('../background2.png');
+	font-family: 'Comic Sans MS';
+}
+
+a, a:hover
+{
+	color: #FF6C00;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: orange;
+}
+
+.col-md-2 .sticky
+{
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+	border-radius: 0 5px 5px 0;
+	background-image: url('../background2.png');
+	z-index: 10;
+	padding-left: 5px;
+	padding-right: 10px;
+	padding-top: 10px;
+	margin-top: 25px;
+	left: 0;
+
+}
+
+
+#asidegauche li
+{
+	margin-bottom: 25%;
+	display: block;
+}
+
+
+#asidegauche a
+{
+	text-decoration:none;
+}
+
+
+
+#asidegauche img
+{
+	width: 120px;
+}
+
+
+.lecteursoundcloud
+{
+	width: 100%;
+	background-image: url('../medias/SoundCloudFinale.png');
+	background-size: 250px;
+	background-repeat: no-repeat;
+	padding: 10px;
+}
+
+.element
+{
+	margin-bottom: 20px;
+}
+
+
+
+@media only screen and (max-width: 991px){
+	.col-md-2 .sticky
+	{
+		border-bottom: 2px solid black;
+		border-radius: 0 0 5px 5px;
+		background-image: url('../background2.png');
+		z-index: 10;
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-top: 10px;
+		padding-bottom: 5px;
+		margin-top: 0;
+		width: 100%;
+		left: 0;
+
+	}
+
+	#asidegauche li
+	{
+	display: inline;
+	}
+
+	.contenu
+	{
+		margin-top: 150px;
+	}
+
+	.element img
+	{
+		display: none;
+	}
+}
