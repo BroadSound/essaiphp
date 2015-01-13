@@ -102,12 +102,12 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
   <div class="row">
     <div class="container-fluid">
       <div class="col-xs-12">
-      	<ul class="contact">	
-        	<li class="contact"><p><a href="mailto:damien.bussiere@outlook.fr">Contact</a></p></li>
-			<li class="contact"><p><a href="workshop/workshop_index.php">Administration</a></p></li>
-			<li class="contact"><p>&#169; 2015 BroadSound Team</p></li>
-			<li class="contact"><a href="https://www.facebook.com/pages/BroadSound/1375754919321962"><img src="medias/facebookicone.png" alt="facebook" width="20" height="20"></a></li>
-			<li class="contact"><img src="medias/twittericone.png" alt="twitter" width="20" height="20"></li>
+      	<ul>	
+          <li><a href="mailto:damien.bussiere@outlook.fr">Contact</a></li>
+          <li><a href="workshop/workshop_index.php">Administration</a></li>
+          <li><p>&#169; 2015 BroadSound Team</p></li>
+          <li><a href="https://www.facebook.com/pages/BroadSound/1375754919321962"><img src="medias/facebookicone.png" alt="facebook" width="20" height="20"></a></li>
+          <li><img src="medias/twittericone.png" alt="twitter" width="20" height="20"></li>
       	</ul>
       </div>
     </div>
