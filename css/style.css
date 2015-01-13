@@ -143,3 +143,26 @@ footer
 	border-top: 2px solid black;
 	width: 100%;
 }
+
+ul.contact
+{
+	margin: 0px; padding: 0px;
+	text-align: center;
+	padding-left: 35%;
+	margin-top: 1px;
+}
+
+li.contact
+{
+	list-style: none;
+	padding-right: 5%;
+}
+
+ul li {
+    display: table-cell;
+}
+
+footer, a
+{
+	color: white;
+}
