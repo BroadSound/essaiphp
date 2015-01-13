@@ -138,7 +138,7 @@ span
 footer
 {
 	background-image: url('../background2.png');
-	height: 50px;
+	height: 30px;
 	color: white;
 	border-top: 2px solid black;
 	width: 100%;
@@ -148,7 +148,6 @@ ul.contact
 {
 	margin: 0px; padding: 0px;
 	text-align: center;
-	padding-left: 35%;
 	margin-top: 1px;
 }
 
@@ -156,6 +155,7 @@ li.contact
 {
 	list-style: none;
 	padding-right: 5%;
+	display: inline-block;
 }
 
 ul li {
