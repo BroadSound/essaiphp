@@ -4,7 +4,7 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="<?php echo WEBROOT; ?>/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="<?php echo WEBROOT; ?>/css/bootstrap/bootstrap.css" />
 		<link rel="icon" href="favicon.ico" />
 		<title>Administration</title>
 		<meta name="description" content="Des nouveaux talents aux artistes confirmés, BroadSound référence les pétites de la musique pop/rock/électro"/>

@@ -1,5 +1,21 @@
 <?php
-include('partials/bdd.php');
+
+$auth = 0;
+include'lib/includes.php';
+
+
+if (isset($_POST['username']) && isset($_POST['password'])) {
+  $username = $bdd->quote($_POST['username']);
+  $password = sha1($_POST['password']);
+  $select = $bdd->query("SELECT * FROM users WHERE username=$username AND password='$password'");
+  if($select->rowCount() > 0 ){
+    $_SESSION['Auth'] = $select->fetch();
+    setFlash('Vous êtes maintenant connecté');
+    header('Location:' . WEBROOT . 'workshop/workshop_index.php');
+    die();
+  }
+}
+
 $select=$bdd->query("SELECT * FROM artistes LIMIT 0,12");
 $headtitles=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 0,2");
 $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
@@ -9,7 +25,7 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; <charset="ISO-8859-1>" />
+    <meta http-equiv="Content-Type" content="text/html; <charset="ISO-8859-1">" />
     <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
@@ -58,7 +74,7 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
       <div class="col-xs-12 col-md-6 extrait">
         <p><h2><?php echo $headtitle['title']; ?></h2></p>
         <p>Par <?php echo $headtitle['auth'] . " le " . $headtitle['date']; ?></p>
-        <p><?php echo $headtitle['text']; ?></p>
+        <p><?php echo $headtitle['content']; ?></p>
       </div>
      <?php endwhile; ?>
     </div>
@@ -89,13 +105,35 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
       <div class="col-xs-12 col-md-6 extrait">
         <p><h2><?php echo $new['title']; ?></h2><span class="badge"><?php echo $new['badge']; ?></span></p>
         <p>Par <?php echo $new['auth'] . " le " . $new['date']; ?></p>
-        <p><?php echo $new['text']; ?></p>
+        <p><?php echo $new['content']; ?></p>
       </div>
     <?php endwhile; ?>
     </div>
   </div>
 
+
+  <div class="row">
+    <div class="container">
+      <div class="col-xs-12">
+        <?php echo flash(); ?>
+
+        <form action="#" method="post" class="form-inline">
+          <div class="form-group">
+            <label for="username">Nom d'utilisateur</label>
+            <?php echo input('username'); ?>
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de Passe</label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+          <button type="submit" class="btn btn-default">Se connecter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
 </div>
+
 
 
 <footer>

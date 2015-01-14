@@ -41,7 +41,7 @@ $select = $bdd->query("SELECT * FROM news ORDER BY date LIMIT ".(($pagecourante-
           <?php while ($news=$select->fetch()): ?>
             <div class="col-xs-12 col-md-10">
               <p><h2><?php echo $news['title']; ?></h2> par <?php echo $news['auth'] . " le " . $news['date']; ?></p>
-              <p><?php echo $news['text']; ?></p>
+              <p><?php echo $news['content']; ?></p>
             </div>
           <?php endwhile; ?>
           </div>

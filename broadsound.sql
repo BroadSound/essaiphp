@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 12 Janvier 2015 à 09:47
+-- Généré le :  Mer 14 Janvier 2015 à 19:28
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -40,14 +40,13 @@ CREATE TABLE IF NOT EXISTS `artistes` (
   `image_fiche` varchar(255) COLLATE utf8_general_mysql500_ci NOT NULL,
   `color` varchar(255) COLLATE utf8_general_mysql500_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=23 ;
 
 --
 -- Contenu de la table `artistes`
 --
 
 INSERT INTO `artistes` (`id`, `nom`, `style`, `oldies`, `membres`, `description`, `discographie`, `date_ajout`, `image`, `soundcloud`, `image_fiche`, `color`) VALUES
-(1, 'Nazca', 'Pop', '', '<ul><li>Juliette, auteur et chanteuse</li>\r\n<li>Marc, compositeur et guitariste</li>\r\n<li>Zoé, chanteuse</li>\r\n<li>Navid, percussioniste</li>\r\n</ul>', 'Nazca est un quatuor pop-folk originaire de la région lyonnaise. Initialement il s''agissait d''un duo constitué de Juliette l''auteure/chanteuse et Marc le compositeur/ guitariste. Puis Zoé est venue compléter les voix et on retrouve Navid en tant que percussioniste. Le ukulélé associé à des mélodies calmes vous donnera envie de voyager au pays des indiens et des cowboys. Depuis sa création en Janvier 2011 le groupe a participé à de nombreux tremplins et festivals ( 76 concerts donnés entre 2011 et mi 2013 ). Nazca n''a pas fini de faire parler de lui et ce ne sont pas nos oreilles qui s''en plaindront.', 'salut', '0000-00-00 00:00:00', 'http://www.lascenebourguignonne.com/uploads/Nazca_cover_30-07-2012.JPG', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/112424812&amp;color=ff9900&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false', 'http://imageshack.com/a/img537/1134/2Bcy21.png', '#1FADA8'),
 (3, 'The Do', 'Rock', '', 'b', 'b', 'b', '2015-01-09 00:00:00', 'http://www.tijuana.fr/files/2011/03/the-do.jpg', '', 'http://imageshack.com/a/img909/7213/YpzSZz.png', '#870000'),
 (4, 'Hozier', 'Pop', '', 'c', 'c', 'c', '0000-00-00 00:00:00', '', '', 'http://imageshack.com/a/img540/8841/OBd8Zv.png', '#1FADA8'),
 (6, 'Parov Stelar', 'electro', '', 'e', 'e', 'e', '0000-00-00 00:00:00', '', '', 'http://imageshack.com/a/img537/3717/GOcS9Z.png', '#80E82A'),
@@ -134,29 +133,22 @@ INSERT INTO `news` (`id`, `title`, `auth`, `date`, `text`, `badge`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `propositions`
+-- Structure de la table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `propositions` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(25) NOT NULL,
-  `style` varchar(255) NOT NULL,
-  `membres` varchar(255) NOT NULL,
-  `biographie` varchar(1000) NOT NULL,
-  `discographie` varchar(1000) NOT NULL,
-  `commentaire` varchar(1000) NOT NULL,
+  `username` varchar(255) CHARACTER SET utf16 NOT NULL,
+  `password` varchar(255) CHARACTER SET utf16 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Contenu de la table `propositions`
+-- Contenu de la table `users`
 --
 
-INSERT INTO `propositions` (`id`, `nom`, `style`, `membres`, `biographie`, `discographie`, `commentaire`) VALUES
-(24, 'b', 'd', '', 'f', '', ''),
-(25, '<h1>nac</h1>', 'd', '', 'f', '', ''),
-(26, 'bernard', 'rock', '', 'f', '', ''),
-(27, 'bernard', 'rock', '', 'fgg', '', '');
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
