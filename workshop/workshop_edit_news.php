@@ -14,7 +14,7 @@ if (isset($_POST['title']) && isset($_POST['auth']) && isset($_POST['content']) 
     $bdd->query("INSERT INTO news SET title=$title, auth=$auth, badge=$badge, content=$content ");
   }
    
-  setFlash('La fiche a bien été ajouté');
+  setFlash('L\'article a bien été ajouté');
   header('Location: workshop_gestion_news.php');
   die();
 }
@@ -61,7 +61,7 @@ if (isset($_GET['id'])) {
   </div>
   <div class="form-group">
     <label for="content">Texte</label>
-    <?php echo input('content'); ?>
+    <?php echo textarea('content'); ?>
   </div>
   <?php echo csrfInput(); ?>
   <button type="submit" class="btn btn-success">Enregistrer</button>

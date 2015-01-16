@@ -11,7 +11,7 @@ if (isset($_GET['delete'])){
   die();
 }
 
-$select = $bdd->query("SELECT id, nom, style FROM artistes");
+$select = $bdd->query("SELECT id, nom, style FROM artistes ORDER BY nom ");
 $categories = $select->fetchAll();
 ?>
 
