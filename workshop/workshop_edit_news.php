@@ -1,17 +1,16 @@
 <?php
 include '../lib/includes.php';
 
-if (isset($_POST['title']) && isset($_POST['auth']) && isset($_POST['content']) && isset($_POST['badge'])){
+if (isset($_POST['title']) && isset($_POST['auth']) && isset($_POST['content'])){
   checkCsrf();
   $title = $bdd->quote($_POST['title']);
   $auth = $bdd->quote($_POST['auth']);
-  $badge = $bdd->quote($_POST['badge']);
   $content = $bdd->quote($_POST['content']);
   if (isset($_GET['id'])) {
     $id = $bdd->quote($_GET['id']);
-    $bdd->query("UPDATE news SET title=$title, auth=$auth, badge=$badge, content=$content WHERE id=$id ");
+    $bdd->query("UPDATE news SET title=$title, auth=$auth, content=$content WHERE id=$id ");
   }else {
-    $bdd->query("INSERT INTO news SET title=$title, auth=$auth, badge=$badge, content=$content ");
+    $bdd->query("INSERT INTO news SET title=$title, auth=$auth, content=$content ");
   }
    
   setFlash('L\'article a bien été ajouté');
@@ -27,7 +26,7 @@ if (isset($_GET['id'])) {
     header('Location: workshop_gestion_news.php');
     die();
   }
-  $_POST= $select->fetchAll();
+  $_POST= $select->fetch();
 }
 
 ?>
@@ -44,32 +43,38 @@ if (isset($_GET['id'])) {
   <body>
   <div class="row">
     <div class="container">
-  <h1>Editer une article</h1>
+      <div class="col-sm-offset-1 col-sm-10">
+        <a href="<?php echo WEBROOT; ?>workshop/workshop_gestion_news.php"><i class="glyphicon glyphicon-chevron-left" id="glyph"></i>Retour</a>
+        <h1>Editer une article</h1>
 
-  <form action="#" method="post">
-  <div class="form-group">
-    <label for="title">Titre de l'article</label>
-    <?php echo input('title'); ?>
-  </div>
-  <div class="form-group">
-    <label for="auth">Auteur</label>
-    <?php echo input('auth'); ?>
-  </div>
-  <div class="form-group">
-    <label for="badge">Badge</label>
-    <?php echo input('badge'); ?>
-  </div>
-  <div class="form-group">
-    <label for="content">Texte</label>
-    <?php echo textarea('content'); ?>
-  </div>
-  <?php echo csrfInput(); ?>
-  <button type="submit" class="btn btn-success">Enregistrer</button>
-</form>
+        <form action="#" method="post">
+        <div class="form-group">
+          <label for="title">Titre de l'article</label>
+          <?php echo input('title'); ?>
+        </div>
+        <div class="form-group">
+          <label for="auth">Auteur</label>
+          <?php echo input('auth'); ?>
+        </div>
+        <div class="form-group">
+          <label for="content">Texte</label>
+          <?php echo textarea('content'); ?>
+        </div>
+        <?php echo csrfInput(); ?>
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+      </form>
+    </div>
   </div>
 </div>
 
-
+<script src="<?php echo WEBROOT; ?>js/jquery.js"></script>
+<script src="<?php echo WEBROOT; ?>js/tynimce/tinymce.min.js"></script>
+<script>
+tinyMCE.init({
+        // General options
+        mode : "textareas"
+});
+</script>
   </body>
 
 </html>

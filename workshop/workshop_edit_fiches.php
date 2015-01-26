@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
     header('Location: workshop_gestion_fiches.php');
     die();
   }
-  $_POST= $select->fetchAll();
+  $_POST= $select->fetch();
 }
 
 ?>
@@ -47,40 +47,53 @@ if (isset($_GET['id'])) {
   <body>
   <div class="row">
     <div class="container">
-  <h1>Editer une fiche</h1>
+      <div class="col-sm-offset-1 col-sm-10">
+        <a href="<?php echo WEBROOT; ?>workshop/workshop_gestion_fiches.php"><i class="glyphicon glyphicon-chevron-left" id="glyph"></i>Retour</a>
+        <h1>Editer une fiche</h1>
 
-  <form action="#" method="post">
-  <div class="form-group">
-    <label for="nom">Nom de l'artiste</label>
-    <?php echo input('nom'); ?>
-  </div>
-  <div class="form-group">
-    <label for="style">Style</label>
-    <?php echo input('style'); ?>
-  </div>
-  <div class="form-group">
-    <label for="membres">Membres</label>
-    <?php echo textarea('membres'); ?>
-  </div>
-  <div class="form-group">
-    <label for="description">Biographie</label>
-    <?php echo textarea('description'); ?>
-  </div>
-  <div class="form-group">
-    <label for="image_fiche">Image Fiche</label>
-    <?php echo input('image_fiche'); ?>
-  </div>
-  <div class="form-group">
-    <label for="soundcloud">Lien Soundcloud</label>
-    <?php echo input('soundcloud'); ?>
-  </div>
-  <?php echo csrfInput(); ?>
-  <button type="submit" class="btn btn-success">Enregistrer</button>
-</form>
+        <form action="#" method="post">
+        <div class="form-group">
+          <label for="nom">Nom de l'artiste</label>
+          <?php echo input('nom'); ?>
+        </div>
+        <div class="form-group">
+          <label for="style">Style</label>
+          <?php echo input('style'); ?>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" name="oldies"> Remember me</label>
+        </div>
+        <div class="form-group">
+          <label for="membres">Membres</label>
+          <?php echo textarea('membres'); ?>
+        </div>
+        <div class="form-group">
+          <label for="description">Biographie</label>
+          <?php echo textarea('description'); ?>
+        </div>
+        <div class="form-group">
+          <label for="image_fiche">Image Fiche</label>
+          <?php echo input('image_fiche'); ?>
+        </div>
+        <div class="form-group">
+          <label for="soundcloud">Lien Soundcloud</label>
+          <?php echo input('soundcloud'); ?>
+        </div>
+        <?php echo csrfInput(); ?>
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+      </form>
+    </div>
   </div>
 </div>
 
-
+<script src="<?php echo WEBROOT; ?>js/jquery.js"></script>
+<script src="<?php echo WEBROOT; ?>js/tynimce/tinymce.min.js"></script>
+<script>
+tinyMCE.init({
+        // General options
+        mode : "textareas"
+});
+</script>
   </body>
 
 </html>

@@ -1,9 +1,6 @@
 <?php
-
-$bdd = new PDO('mysql:host=localhost;dbname=broadsound', 'root', '');
-$bdd->exec("SET CHARACTER SET utf8");
-$bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
-$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+$auth = 0;
+include 'lib/includes.php';
 
 $count=$bdd->query('SELECT COUNT(id) as nbArt FROM news'); 
 $datacount = $count->fetch(PDO::FETCH_OBJ); 
@@ -40,7 +37,7 @@ $select = $bdd->query("SELECT * FROM news ORDER BY date LIMIT ".(($pagecourante-
           <div class="container">
           <?php while ($news=$select->fetch()): ?>
             <div class="col-xs-12 col-md-10">
-              <p><h2><?php echo $news['title']; ?></h2> par <?php echo $news['auth'] . " le " . $news['date']; ?></p>
+              <p><h1><?php echo $news['title']; ?></h1> par <?php echo $news['auth'] . " le " . $news['date']; ?></p>
               <p><?php echo $news['content']; ?></p>
             </div>
           <?php endwhile; ?>

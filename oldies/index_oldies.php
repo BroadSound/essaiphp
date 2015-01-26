@@ -1,9 +1,6 @@
 <?php
-
-$bdd = new PDO('mysql:host=localhost;dbname=broadsound', 'root', '');
-  $bdd->exec("SET CHARACTER SET utf8");
-  $bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
-  $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+$auth = 0;
+include '../lib/includes.php';
 
   $count=$bdd->query('SELECT COUNT(id) as nbArt FROM artistes'); 
   $datacount = $count->fetch(PDO::FETCH_OBJ); 
@@ -15,7 +12,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=broadsound', 'root', '');
     { $pagecourante = $_GET['page']; }
   else { $pagecourante = 1; }
   
-  $req = $bdd->query("SELECT * FROM artistes WHERE oldies =\"true\" ORDER BY nom LIMIT ".(($pagecourante-1)*$nbparpage).",$nbparpage");
+  $req = $bdd->query("SELECT * FROM artistes WHERE oldies =\"on\" ORDER BY nom LIMIT ".(($pagecourante-1)*$nbparpage).",$nbparpage");
 
 ?>
 
@@ -23,8 +20,8 @@ $bdd = new PDO('mysql:host=localhost;dbname=broadsound', 'root', '');
 <html>
   <head>
     <meta charset="utf-8" />
-    <link href="../css/bootstrap/bootstrap.css" rel="stylesheet">
-    <link href="../css/artistesgroupes.css" rel="stylesheet">
+    <link href="<?php echo WEBROOT ; ?>css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo WEBROOT ; ?>css/artistesgroupes.css" rel="stylesheet">
   </head>
   <body>
 
@@ -40,7 +37,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=broadsound', 'root', '');
           if($i==$pagecourante){
             echo "page" . " $i ~ ";
           }else{
-            echo " <a href=\"artistesgroupes.php?page=$i\"> $i </a>" . " ~ ";
+            echo " <a href=\"index_oldies.php?page=$i\"> $i </a>" . " ~ ";
           }
         }?>
       </div>
@@ -49,9 +46,9 @@ $bdd = new PDO('mysql:host=localhost;dbname=broadsound', 'root', '');
 </div>
 
 
-<script src="../js/jquery.js"></script> 
-<script src="../js/bootstrap.js "></script>
-<script src="../js/essai.js "></script>
+<script src="<?php echo WEBROOT ; ?>js/jquery.js"></script> 
+<script src="<?php echo WEBROOT ; ?>js/bootstrap.js "></script>
+<script src="<?php echo WEBROOT ; ?>js/essai.js "></script>
 </body>
 
 </html>

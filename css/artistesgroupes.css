@@ -1,3 +1,8 @@
+/*///////////////////////////////
+/////////GENERAL////////////////
+//////////////////////////////*/
+
+
 @font-face
 {
 	font-family: Harabara;
@@ -18,72 +23,18 @@ img
 	height: auto;
 }
 
-
-/*HEADER*/
-
-
-header, .navbar
-{
-	border-bottom: 2px black solid;
-	background-image: url('../background2.png');
-	height: 100px;
-	text-align: center;
-}
-
-
-header li, .navbar li
-{
-	padding-left: 2px;
-	padding-right: 5px;
-}
-
-.panel-heading
-{
-	font-family: Harabara;
-	color: #FF6C00;
-	
-
-	
-}
-
-.panel
-{
-	border: 0;
-	width: 100%;
-	background-image: url('../background.jpeg');
-	margin-top: 40px;
-
-}
-
-.panel-heading
-{
-	
-	font-size: xx-large;
-	padding: 0;
-	margin: 0;
-	background-image: url('../background.jpeg');
-}
-
-.panel-body
-{
-	border-bottom: 2px solid orange;
-	border-left: 2px solid orange;
-	border-right: 2px solid orange;
-	border-radius: 0 0 5px 5px;
-	background-image: url('../background2.png');
-	font-family: 'Comic Sans MS';
-}
-
-a, a:hover
-{
-	color: #FF6C00;
-	text-decoration: none;
-}
-
-a:hover
+h1
 {
 	color: orange;
+	font-family: Harabara;
+	text-shadow: 2px 2px 2px grey;
 }
+
+
+/*////////////////////////////////
+////////////ASIDE GAUCHE/////////
+///////////////////////////////*/
+
 
 .col-md-2 .sticky
 {
@@ -122,13 +73,19 @@ a:hover
 }
 
 
-.lecteursoundcloud
+/*//////////////////////////////
+////////////FICHE/////////////
+/////////////////////////////*/
+
+a, a:hover
 {
-	width: 100%;
-	background-image: url('../medias/SoundCloudFinale.png');
-	background-size: 250px;
-	background-repeat: no-repeat;
-	padding: 10px;
+	color: #FF6C00;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: orange;
 }
 
 .element
@@ -136,6 +93,54 @@ a:hover
 	margin-bottom: 20px;
 }
 
+.panel
+{
+	border: 0;
+	width: 100%;
+	background-image: url('../background.jpeg');
+	margin-top: 40px;
+
+}
+
+.panel-heading
+{
+	font-family: Harabara;
+	color: #FF6C00;
+	font-size: xx-large;
+	padding: 0;
+	margin: 0;
+	background-image: url('../background.jpeg');	
+}
+
+
+.panel-body
+{
+	border-bottom: 2px solid orange;
+	border-left: 2px solid orange;
+	border-right: 2px solid orange;
+	border-radius: 0 0 5px 5px;
+	background-image: url('../background2.png');
+	font-family: 'Comic Sans MS';
+}
+
+
+.lecteursoundcloud
+{
+	width: 100%;
+}
+
+
+
+/*///////////////////////////////////
+/////////////PAGINATION/////////////
+//////////////////////////////////*/
+
+
+
+
+/*////////////////////////////////////
+/////////////MEDIA QUERIES///////////
+///////////////////////////////////*/
 
 
 @media only screen and (max-width: 991px){

@@ -1,29 +1,44 @@
 <?php
+$auth = 0;
+include'lib/includes.php'; 
 
-include'partials/bdd.php'; 
+if (isset($_POST['nom']) && isset($_POST['style']) && isset($_POST['description']) && isset($_POST['discographie'])){
+    checkCsrf();
+    $nom = $bdd->quote($_POST['nom']);
+    $style = $bdd->quote($_POST['style']);
+    $discographie = $bdd->quote($_POST['discographie']);
+    $description = $bdd->quote($_POST['description']);
 
-
+    $bdd->query("INSERT INTO artistes SET nom=$nom, style=$style, description=$description, discographie=$discographie ");
+    
+    header('Location: request.php');
+    setFlash('Votre proposition a bien été envoyé');
+    die();
+}
 ?>
 
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="utf-8" />
-   <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
-   <link href="css/artistesgroupes.css" rel="stylesheet">
- </head>
- <body>
+    <head>
+        <meta charset="utf-8" />
+        <link href="<?php echo WEBROOT; ?>css/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="<?php echo WEBROOT; ?>css/artistesgroupes.css" rel="stylesheet">
+    </head>
 
-<div class="row">
-	<div class="container-fluid">
-    	<div class="col-sm-12 col-md-2">
+    <body>
+
+    <div class="row">
+	   <div class="container-fluid">
+            <div class="col-sm-12 col-md-2">
             <?php include('partials/aside_gauche.php'); ?>
-        </div>
-    	<div class="col-sm-12 col-md-offset-1 col-md-8 col-md-offset-1">
-    		<form action="workshop/request_check.php" method="POST">
+            </div>
 
-    			<div class="row">
-    				<h2>Pour vous contacter</h2>
+            <div class="col-sm-12 col-md-offset-1 col-md-8 col-md-offset-1">
+                <?php echo flash(); ?>
+                <form action="#" method="post">
+                    
+                    <div class="row">
+                        <h1>Pour vous contacter</h1>
     				<div class="row">
     					<div class="col-md-4">
 							<div class="form-group">
@@ -39,44 +54,43 @@ include'partials/bdd.php';
     					</div>
     				</div>
     				<div class="row">
-    				<h2>Votre proposition</h2>
-    					<div class="col-xs-12 col-md-4">
+    				<h1>Votre proposition</h1>
+    					<div class="col-xs-12 col-md-6">
     						<div class="form-group">
-    							<label for="inputnameartist">Artiste ou Groupe</label>
-    							<input type="text" name="nameartist" class="form-control" id="inputnameartist">
+    							<label for="nom">Artiste ou Groupe</label>
+    							<?php echo input('nom'); ?>
     						</div>
     					</div>
-    					<div class="col-xs-12 col-md-4">
+    					<div class="col-xs-12 col-md-6">
     						<div class="form-group">
-    							<label for="inputstyle">Style</label>
-                                <select name="style" id="inputstyle" class="form-control">
-                                    <option value="rock">Rock</option>
-                                    <option value="pop">Pop</option>
-                                    <option value="electro">Electro</option>
+    							<label for="style">Style</label>
+                                <select name="style" id="style" class="form-control">
+                                    <option value="Rock">Rock</option>
+                                    <option value="Pop">Pop</option>
+                                    <option value="Electro">Electro</option>
                                 </select>
     						</div>
     					</div>
-    					<div class="col-xs-12 col-md-4">
+
+                    <div class="row">
+
+
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                              <label for="description">Biographie</label>
+                              <?php echo textarea('description'); ?>    
+                            </div>
+                        </div>
+
+    					<div class="col-xs-12 col-md-6">
     						<div class="form-group">
-    							<label for="inputmembers">Membres</label>
-    							<input type="text" name="members" class="form-control" id="inputmembers">
+    							<label for="discographie">Discographie</label>
+    							<?php echo textarea('discographie'); ?>
     						</div>
     					</div>
     				</div>
-    				<div class="row">
-    					<div class="col-xs-12 col-md-5">
-    						<div class="form-group">
-    							<label for="inputbio">Biographie</label>
-    							<textarea name="biography" class="form-control" id="inputbio"></textarea>
-    						</div>
-    					</div>
-    					<div class="col-xs-12 col-md-5">
-    						<div class="form-group">
-    							<label for="inputdisco">Discographie</label>
-    							<textarea name="discography" class="form-control" id="inputdisco"></textarea>
-    						</div>
-    					</div>
-    				</div>
+                </div>
+                    <?php echo csrfInput(); ?>
     				<button type="submit" class="btn btn-primary">Envoyer</button>
     			</div>
     		</form>
@@ -84,9 +98,17 @@ include'partials/bdd.php';
 	</div>
 </div>
 
-<script src="js/jquery.js"></script> 
-<script src="js/bootstrap.js "></script>
-<script src="js/essai.js "></script>
+
+
+<script src="<?php echo WEBROOT; ?>js/jquery.js"></script>
+<script src="<?php echo WEBROOT; ?>js/essai.js "></script>
+<script src="<?php echo WEBROOT; ?>js/tynimce/tinymce.min.js"></script>
+<script>
+tinyMCE.init({
+        // General options
+        mode : "textareas"
+});
+</script>
  </body>
 
 </html>

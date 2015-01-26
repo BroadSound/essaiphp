@@ -1,6 +1,7 @@
 <?php
-  $bdd = new PDO('mysql:host=localhost;dbname=broadsound', 'root', '');
-  $bdd->exec("SET CHARACTER SET utf8");
+$auth = 0;
+include 'lib/includes.php';
+  
   $requete_count=$bdd->query('SELECT COUNT(id) as nbArt FROM artistes WHERE style= "Rock"'); 
   $datacount = $requete_count->fetch(PDO::FETCH_OBJ); 
   $nbArt = $datacount->nbArt; 
@@ -36,7 +37,7 @@
           if($i==$pagecourante){
             echo "page" . " $i ~ ";
           }else{
-            echo " <a href=\"artistesgroupes.php?page=$i\"> $i </a>" . " ~ ";
+            echo " <a href=\"electro.php?page=$i\"> $i </a>" . " ~ ";
           }
         }?>
       </div>

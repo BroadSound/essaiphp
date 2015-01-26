@@ -17,6 +17,7 @@ a, a:hover
 	text-decoration: none;
 }
 
+
 /*////////////////////////////////
 ///////////HEADER////////////////
 ///////////////////////////////*/
@@ -36,6 +37,10 @@ header img
 
 }
 
+nav .form-group
+{
+	margin-right: 15px;
+}
 
 /*////////////////////////////////
 ///////////CONTENU////////////////
@@ -53,21 +58,6 @@ h1
 	text-shadow: 2px 2px 2px grey;
 }
 
-
-h2, .badge
-{
-	display: inline;
-}
-
-span
-{
-	margin-left: 10px;
-}
-
-.badge
-{
-	color: white;
-}
 
 .thumbnail img
 {
@@ -130,6 +120,11 @@ span
 	opacity: 1;
 }
 
+
+.connect
+{
+	margin-top: 50px;
+}
 
 /*////////////////////////////////
 ///////////FOOTER////////////////

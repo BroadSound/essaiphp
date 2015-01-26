@@ -1,7 +1,7 @@
 <?php
 
 $auth = 0;
-include'lib/includes.php';
+require'lib/includes.php';
 
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -13,10 +13,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     setFlash('Vous êtes maintenant connecté');
     header('Location:' . WEBROOT . 'workshop/workshop_index.php');
     die();
+  } else {
+    setFlash('Vous ne pouvez pas accéder à cette partie', 'danger');
   }
 }
 
-$select=$bdd->query("SELECT * FROM artistes LIMIT 0,12");
+$select=$bdd->query("SELECT artistes.*, colors.style_color FROM artistes INNER JOIN colors ON artistes.style = colors.category LIMIT 0,12");
 $headtitles=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 0,2");
 $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
 
@@ -25,7 +27,7 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; <charset="ISO-8859-1">" />
+    <meta charset="utf-8" />
     <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
@@ -46,11 +48,11 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
     <div class="container">
       <div class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-          <li> <a href="news.php">Nouveaut&eacute;s</a> </li>
+          <li> <a href="news.php">Nouveautés</a> </li>
           <li> <a href="artistesgroupes.php">Artistes/Groupes</a> </li>
           <li> <a href="oldies/index_oldies.php">Oldies</a> </li>
           <li> <a href="blogsound.php">BlogSound</a> </li>
-          <li><a href="forum/forum.php">Le Saloon</a></li>
+          <li><a href="saloon/saloon.php">Le Saloon</a></li>
           <li><a href="request.php">Propositions</a></li>
         </ul>
         <form class="navbar-form navbar-right inline-form">
@@ -69,7 +71,8 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
 
   <div class="row">
     <div class="container">
-      <h1>Gros Titres</h1>
+      <?php echo flash(); ?>
+      <a href="news.php"><h1>Gros Titres</h1></a>
       <?php while ($headtitle=$headtitles->fetch()): ?> 
       <div class="col-xs-12 col-md-6 extrait">
         <p><h2><?php echo $headtitle['title']; ?></h2></p>
@@ -82,14 +85,14 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
   
   <div class="row">
     <div class="container">
-      <h1>Studio</h1>
+      <a href="artistesgroupes.php"><h1>Studio</h1></a>
       <?php while($donnees=$select->fetch()): ?>
       <div class="col-xs-6 col-sm-3 col-md-2">
         <a href="artistesgroupes.php#<?php echo $donnees['nom']; ?>" class="thumbnail" data-toggle="popover" data-html="true" data-content="
           <p><strong>Membres : </strong><?php echo $donnees['membres']; ?></p>" >
-          <div class="essai"><img src="<?php echo $donnees['image_fiche']; ?>" alt="Nazca">
+          <div class="essai"><img src="<?php echo $donnees['image_fiche']; ?>" alt="<?php echo $donnees['nom']; ?>">
             <div class="etiquette"></div>
-            <div class="etiquette_text" style="background-color: <?php echo $donnees['color']; ?>; opacity: 0.5;"><?php echo $donnees['style']; ?></div>
+            <div class="etiquette_text" style="background-color: <?php echo $donnees['style_color']; ?>; opacity: 0.5;"><?php echo $donnees['style']; ?></div>
           </div>
         </a>
       </div>
@@ -100,10 +103,10 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
 
   <div class="row">
     <div class="container">
-      <h1>Actualit&eacute; du jour</h1>
+      <h1>Actualité du jour</h1>
       <?php while ($new=$news->fetch()): ?> 
       <div class="col-xs-12 col-md-6 extrait">
-        <p><h2><?php echo $new['title']; ?></h2><span class="badge"><?php echo $new['badge']; ?></span></p>
+        <p><h2><?php echo $new['title']; ?></h2></p>
         <p>Par <?php echo $new['auth'] . " le " . $new['date']; ?></p>
         <p><?php echo $new['content']; ?></p>
       </div>
@@ -111,11 +114,10 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
     </div>
   </div>
 
-
+<div class="connect">
   <div class="row">
     <div class="container">
       <div class="col-xs-12">
-        <?php echo flash(); ?>
 
         <form action="#" method="post" class="form-inline">
           <div class="form-group">
@@ -126,11 +128,12 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
             <label for="password">Mot de Passe</label>
             <input type="password" class="form-control" id="password" name="password">
           </div>
-          <button type="submit" class="btn btn-default">Se connecter</button>
+          <button type="submit" class="btn btn-success">Se connecter</button>
         </form>
       </div>
     </div>
   </div>
+</div>
 
 </div>
 
@@ -142,10 +145,7 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
       <div class="col-xs-12">
       	<ul>	
           <li><a href="mailto:damien.bussiere@outlook.fr">Contact</a></li>
-          <li><a href="workshop/workshop_index.php">Administration</a></li>
-          <li><p>&#169; 2015 BroadSound Team</p></li>
-          <li><a href="https://www.facebook.com/pages/BroadSound/1375754919321962"><img src="medias/facebookicone.png" alt="facebook" width="20" height="20"></a></li>
-          <li><img src="medias/twittericone.png" alt="twitter" width="20" height="20"></li>
+          <li><p>&#169; 2014 BUSSIERE Damien, Merci à Simon Bazin pour les icônes</p></li>
       	</ul>
       </div>
     </div>
@@ -153,10 +153,11 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
 </footer>
 
 
+
 <script src="js/jquery.js"></script>
 <script type="text/javascript">
 $(function (){
-   $(".thumbnail").popover({placement:'auto right', trigger:'hover', container: 'body', delay: { show: 300}}); 
+   $(".thumbnail").popover({placement:'auto right', trigger:'hover', container: 'body', delay: { show: 400}}); 
 });</script>
 <script src="js/bootstrap.js"></script>
 </body>

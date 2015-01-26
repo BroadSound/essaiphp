@@ -29,7 +29,7 @@
           </div>
           <div class="row">
             <div class="col-sm-8">
-              <p><iframe class="lecteursoundcloud" width="70%" height="100%" src="<?php echo $donnees["soundcloud"]; ?>"></iframe></p>
+              <p><iframe class="lecteursoundcloud" src="<?php echo $donnees["soundcloud"]; ?>"></iframe></p>
             </div>
               <div class="col-xs-2">
                 <p><a href=""><img src="medias/facebookicone.png" alt="Facebook"/></a></p>
