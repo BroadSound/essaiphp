@@ -53,7 +53,9 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
           <li> <a href="oldies/index_oldies.php">Oldies</a> </li>
           <li> <a href="blogsound.php">BlogSound</a> </li>
           <li><a href="saloon/saloon.php">Le Saloon</a></li>
-          <li><a href="request.php">Propositions</a></li>
+          <li><a href="request.php">Soumettre</a></li>
+          <li><a href="autochosing.php">Épate-moi!</a></li> 
+          <!-- C'est toi le pro du php ;) il faut faire le système de autochosing.php, qui n'existe pas encore -->
         </ul>
         <form class="navbar-form navbar-right inline-form">
           <div class="form-group">
