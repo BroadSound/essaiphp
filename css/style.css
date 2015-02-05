@@ -121,10 +121,6 @@ h1
 }
 
 
-.connect
-{
-	margin-top: 50px;
-}
 
 /*////////////////////////////////
 ///////////FOOTER////////////////
@@ -133,33 +129,13 @@ h1
 footer
 {
 	background-image: url('../background2.png');
-	height: 50px;
+	height: 70px;
 	color: white;
 	border-top: 2px solid black;
 	width: 100%;
-	margin-top: 40px;
+	margin-top: 35px;
+	padding-top: 25px;
 }
-
-footer ul
-{
-	margin: 0px;
-	text-align: center;
-	padding-top: 15px;
-	padding-bottom: 5px;
-}
-
-footer li
-{
-	list-style: none;
-	padding-right: 5%;
-	display: inline-block;
-}
-
-footer, a
-{
-	color: white;
-}
-
 
 
 

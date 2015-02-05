@@ -34,10 +34,10 @@ $req = $bdd->query("SELECT * FROM artistes ORDER BY nom LIMIT ".(($pagecourante-
         </div>
         <div class="col-sm-12 col-md-10 contenu">
           <?php include('partials/element.php'); ?>
-          <div class="pagination col-xs-12">
+          <div class="col-xs-12 pagination">
             <?php for($i=1;$i<=$nbpages;$i++){
             if($i==$pagecourante){
-              echo "page" . " $i ~ ";
+              echo "PAGE" . " $i ~ ";
             }else{
               echo " <a href=\"artistesgroupes.php?page=$i\"> $i </a>" . " ~ ";
             }

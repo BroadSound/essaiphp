@@ -18,9 +18,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
   }
 }
 
-$select=$bdd->query("SELECT artistes.*, colors.style_color FROM artistes INNER JOIN colors ON artistes.style = colors.category LIMIT 0,12");
-$headtitles=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 0,2");
-$news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
+$select=$bdd->query("SELECT artistes.*, colors.style_color FROM artistes INNER JOIN colors ON artistes.style = colors.category ORDER BY date_ajout DESC LIMIT 0,12");
+$headtitles=$bdd->query("SELECT title, auth, content, DATE_FORMAT(date, '%d.%m.%Y') AS date FROM news ORDER BY date LIMIT 0,2");
+$news=$bdd->query("SELECT title, auth, content, DATE_FORMAT(date, '%d.%m.%Y') AS date FROM news ORDER BY date DESC LIMIT 2,4");
 
 ?>
 
@@ -28,8 +28,10 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
 <html>
   <head>
     <meta charset="utf-8" />
-    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="<?php echo WEBROOT; ?>css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo WEBROOT; ?>css/style.css" rel="stylesheet">  
+    <link rel="icon" href="<?php echo WEBROOT; ?>medias/favicon.ico" />
+
   </head>
   <body>
     
@@ -114,42 +116,30 @@ $news=$bdd->query("SELECT * FROM news ORDER BY date LIMIT 2,4");
     </div>
   </div>
 
-<div class="connect">
-  <div class="row">
-    <div class="container">
-      <div class="col-xs-12">
-
-        <form action="#" method="post" class="form-inline">
-          <div class="form-group">
-            <label for="username">Nom d'utilisateur</label>
-            <?php echo input('username'); ?>
-          </div>
-          <div class="form-group">
-            <label for="password">Mot de Passe</label>
-            <input type="password" class="form-control" id="password" name="password">
-          </div>
-          <button type="submit" class="btn btn-success">Se connecter</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
 </div>
 
 
 
 <footer>
-  <div class="row">
-    <div class="container-fluid">
-      <div class="col-xs-12">
-      	<ul>	
-          <li><a href="mailto:damien.bussiere@outlook.fr">Contact</a></li>
-          <li><p>&#169; 2014 BUSSIERE Damien, Merci à Simon Bazin pour les icônes</p></li>
-      	</ul>
+  
+    <div class="row">
+      <div class="container">
+        <div class="col-xs-12">
+
+          <form action="#" method="post" class="form-inline">
+            <div class="form-group">
+              <label for="username">Nom d'utilisateur</label>
+              <?php echo input('username'); ?>
+            </div>
+            <div class="form-group">
+              <label for="password">Mot de Passe</label>
+              <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-success">Se connecter</button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
 </footer>
 
 

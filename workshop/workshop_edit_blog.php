@@ -10,7 +10,7 @@ if (isset($_POST['title']) && isset($_POST['auth']) && isset($_POST['content']))
     $id = $bdd->quote($_GET['id']);
     $bdd->query("UPDATE blog SET title=$title, auth=$auth, content=$content WHERE id=$id ");
   }else {
-    $bdd->query("INSERT INTO blog SET title=$title, auth=$auth, content=$content ");
+    $bdd->query("INSERT INTO blog SET title=$title, auth=$auth, content=$content, date=NOW() ");
   }
    
   setFlash('L\'article a bien été ajouté');

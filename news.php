@@ -12,7 +12,7 @@ if(isset($_GET['page']) && $_GET['page']>0 && $_GET['page']<=$nbpages)
   { $pagecourante = $_GET['page']; }
 else { $pagecourante = 1; }
 
-$select = $bdd->query("SELECT * FROM news ORDER BY date LIMIT ".(($pagecourante-1)*$nbparpage).",$nbparpage");
+$select = $bdd->query("SELECT title, auth, content, DATE_FORMAT(date, '%d.%m.%Y') AS date FROM news ORDER BY date DESC LIMIT ".(($pagecourante-1)*$nbparpage).",$nbparpage");
 
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 include '../lib/includes.php';
 
-if (isset($_POST['nom']) && isset($_POST['style']) && isset($_POST['membres']) && isset($_POST['image_fiche']) && isset($_POST['soundcloud']) && isset($_POST['description']) && isset($_POST['image_fiche'])){
+if (isset($_POST['nom']) && isset($_POST['style']) && isset($_POST['membres']) && isset($_POST['image_fiche'])&& isset($_POST['description']) && isset($_POST['discographie']) && isset($_POST['soundcloud']) && isset($_POST['image_fiche'])){
   checkCsrf();
   $nom = $bdd->quote($_POST['nom']);
   $style = $bdd->quote($_POST['style']);
@@ -10,11 +10,12 @@ if (isset($_POST['nom']) && isset($_POST['style']) && isset($_POST['membres']) &
   $soundcloud = $bdd->quote($_POST['soundcloud']);
   $description = $bdd->quote($_POST['description']);
   $image_fiche = $bdd->quote($_POST['image_fiche']);
+  $discographie = $bdd->quote($_POST['discographie']);
   if (isset($_GET['id'])) {
     $id = $bdd->quote($_GET['id']);
-    $bdd->query("UPDATE artistes SET nom=$nom, style=$style, membres=$membres, image_fiche=$image_fiche, soundcloud=$soundcloud, description=$description, image_fiche=$image_fiche WHERE id=$id ");
+    $bdd->query("UPDATE artistes SET nom=$nom, style=$style, membres=$membres, image_fiche=$image_fiche, soundcloud=$soundcloud, description=$description, image_fiche=$image_fiche, discographie=$discographie WHERE id=$id ");
   }else {
-    $bdd->query("INSERT INTO artistes SET nom=$nom, style=$style, membres=$membres, soundcloud=$soundcloud, description=$description, image_fiche=$image_fiche ");
+    $bdd->query("INSERT INTO artistes SET nom=$nom, style=$style, membres=$membres, soundcloud=$soundcloud, description=$description, discographie=$discographie, image_fiche=$image_fiche, date_ajout=NOW()");
   }
    
   setFlash('La fiche a bien été ajouté');
@@ -70,6 +71,10 @@ if (isset($_GET['id'])) {
         <div class="form-group">
           <label for="description">Biographie</label>
           <?php echo textarea('description'); ?>
+        </div>
+        <div class="form-group">
+          <label for="discographie">Discographie</label>
+          <?php echo textarea('discographie'); ?>
         </div>
         <div class="form-group">
           <label for="image_fiche">Image Fiche</label>
