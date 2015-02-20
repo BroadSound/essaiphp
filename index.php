@@ -50,9 +50,7 @@ $news=$bdd->query("SELECT title, auth, content, DATE_FORMAT(date, '%d.%m.%Y') AS
     <div class="container">
       <div class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-          <li> <a href="news.php">Nouveautés</a> </li>
           <li> <a href="artistesgroupes.php">Artistes/Groupes</a> </li>
-          <li> <a href="oldies/index_oldies.php">Oldies</a> </li>
           <li> <a href="blogsound.php">BlogSound</a> </li>
           <li><a href="saloon/saloon.php">Le Saloon</a></li>
           <li><a href="request.php">Propositions</a></li>
@@ -74,7 +72,7 @@ $news=$bdd->query("SELECT title, auth, content, DATE_FORMAT(date, '%d.%m.%Y') AS
   <div class="row">
     <div class="container">
       <?php echo flash(); ?>
-      <a href="news.php"><h1>Gros Titres</h1></a>
+      <h1>Gros Titres</h1>
       <?php while ($headtitle=$headtitles->fetch()): ?> 
       <div class="col-xs-12 col-md-6 extrait">
         <p><h2><?php echo $headtitle['title']; ?></h2></p>

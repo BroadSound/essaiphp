@@ -18,7 +18,6 @@ include '../lib/includes.php';
         <?php echo flash(); ?>
         <ul>
           <li><a href="workshop_gestion_fiches.php"><h1>Gérer les fiches</h1></a></li>
-          <li><a href="workshop_gestion_news.php"><h1>Gérer les actualités</h1></a></li>
           <li><a href="workshop_gestion_blog.php"><h1>Gérer le Blog</h1></a></li>
         </ul>
     </div>

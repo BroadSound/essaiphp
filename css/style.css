@@ -8,8 +8,10 @@
 
 body
 {
- background-image: url('../background.jpeg');
- background-attachment: scroll;
+ background-image: url('../essai.jpg');
+ background-attachment: fixed;
+ background-repeat: no-repeat;
+ background-size: 100%;
 }
 
 a, a:hover
