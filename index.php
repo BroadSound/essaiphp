@@ -53,7 +53,9 @@ $news=$bdd->query("SELECT title, auth, content, DATE_FORMAT(date, '%d.%m.%Y') AS
           <li> <a href="artistesgroupes.php">Artistes/Groupes</a> </li>
           <li> <a href="blogsound.php">BlogSound</a> </li>
           <li><a href="saloon/saloon.php">Le Saloon</a></li>
-          <li><a href="request.php">Propositions</a></li>
+          <li><a href="request.php">Soumettre</a></li>
+          <li><a href="autochosing.php">Épate-moi!</a></li> 
+          <!-- C'est toi le pro du php ;) il faut faire le système de autochosing.php, qui n'existe pas encore -->
         </ul>
         <form class="navbar-form navbar-right inline-form">
           <div class="form-group">
